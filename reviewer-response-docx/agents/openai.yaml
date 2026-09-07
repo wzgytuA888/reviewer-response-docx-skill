@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reviewer Response DOCX"
+  short_description: "Draft and format auditable reviewer response packages"
+  default_prompt: "Use $reviewer-response-docx to revise my manuscript and create a formatted point-by-point Word response."
