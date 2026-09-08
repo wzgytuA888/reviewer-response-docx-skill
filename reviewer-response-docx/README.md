@@ -6,6 +6,8 @@ It reproduces reviewer comments in blue, writes responses in black, presents ver
 
 Reviewer comments are treated as diagnostic input rather than manuscript dictation. The response answers each comment directly, while the manuscript is revised as a coherent reader-facing argument supported by the study evidence and relevant literature.
 
+Comments that require recalculation, reanalysis, robustness checks, or data-derived figure and table changes enter a mandatory local-data gate. If exact paths are absent, the Skill asks the author for the data, code, variable definitions, existing outputs, and analysis-environment locations before claiming completion. See the [workflow diagram](references/workflow.md).
+
 Copy `reviewer-response-docx` into the Codex skills directory, then invoke: `Use $reviewer-response-docx to process these reviewer comments and revise the supplied manuscript.`
 
 This repository contains no manuscript, reviewer report, author identity, or unpublished study data.
