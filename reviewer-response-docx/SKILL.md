@@ -11,6 +11,8 @@ Produce a scientifically honest revision package whose response, manuscript, sup
 
 Inspect all supplied materials before drafting: the editor decision and decision type; complete reviewer reports; manuscript, supplement, figures, tables, data, and code; previous revision files that define the requested format; and current journal instructions when relevant. If the decision is not explicit, ask whether it is major or minor revision. Never infer it from comment tone or count.
 
+Read [references/workflow.md](references/workflow.md) for the end-to-end workflow and the mandatory local-data branch.
+
 ## Working method
 
 1. Preserve every editor and reviewer comment verbatim. Assign stable internal IDs, but use neutral `Comment 1` labels in reviewer-facing files.
@@ -21,6 +23,33 @@ Inspect all supplied materials before drafting: the editor decision and decision
 6. Treat reviewer reports as mutually blind unless the journal explicitly requires a combined visible response. A reviewer-specific file contains only that reviewer's material.
 7. When a reviewer missed existing material, improve its visibility or wording. Do not rebuke the reviewer by saying it was already clear.
 8. For disagreement, acknowledge the concern, present evidence, narrow the claim where needed, and state the exact manuscript action.
+
+## Local-data gate
+
+Classify every comment before drafting as either `TEXT_OR_LITERATURE` or `LOCAL_DATA_REQUIRED`. Use `LOCAL_DATA_REQUIRED` whenever a defensible response needs reanalysis, recalculation, a new robustness check, regenerated statistics, source-data changes, or revision of a data-derived table or figure.
+
+If the required paths are not already explicit in the current task materials, ask the author one concise, bundled question for the exact locations of:
+
+- raw and processed data;
+- analysis scripts, notebooks, or command files;
+- the data dictionary, schema, codebook, and variable definitions;
+- current result tables, figure source data, and generated outputs; and
+- the required Python, R, Stata, MATLAB, GIS, or other environment when special dependencies apply.
+
+Use this request template when useful: `This comment requires supplementary analysis using local data. Please provide the folder paths for (1) raw/processed data, (2) analysis code, (3) variable definitions or data dictionary, (4) current table/figure source data and outputs, and (5) the analysis environment if it has special dependencies.` Adapt it to the author's language and name the specific reviewer comment.
+
+Do not search unrelated drives, infer an undocumented data location, substitute public data without authorization, or fabricate analytical results. While waiting, continue independent literature review, manuscript mapping, and an analysis plan, but label the dependent item `AUTHOR_INPUT_NEEDED_DATA_PATH` and keep the package in draft status. If the author explicitly postpones the work, use `DEFERRED_BY_AUTHOR`.
+
+After paths are supplied:
+
+1. Inspect the files read-only first. Inventory authoritative inputs, code, versions, variables, units, joins, filters, expected outputs, and provenance.
+2. Preserve source files. Work in a separate analysis/output directory and record every derived artifact.
+3. Reproduce the reported baseline before changing the analysis. Resolve unexplained differences before making completion claims.
+4. Run the supplementary analysis requested by the underlying scientific concern. Use parallel local workers when the workload is safely divisible and the project's instructions permit it.
+5. Validate numerical consistency across code outputs, tables, figures, manuscript text, supplement, and response letter.
+6. Revise the paper for future readers, then state in the response what was done, what evidence changed, and the exact manuscript and output locations.
+
+Ask a targeted follow-up only when supplied paths contain ambiguous versions, missing join keys, undocumented variables, inaccessible files, or a non-reproducible baseline. Never say an analysis is complete until its result is locally inspectable.
 
 ## Use comments as diagnosis, not manuscript dictation
 
